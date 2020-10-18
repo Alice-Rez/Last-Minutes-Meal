@@ -29,11 +29,17 @@ Application uses API key, therefore there is no possibility to make live demo fo
 3. Get your own API key from [Spoonacular API](https://spoonacular.com/food-api)
 4. In the `src/script` folder create new file with name `config.js`
 5. Insert your own API key in the `config.js` :
-   ```
-   export const apiKey = "<here-comes-your-own-API-key>"
+   ```javascript
+   export const apiKey = "<here-comes-your-own-API-key>";
    ```
 6. Adjust the number of the initially displayed recipes in variable `minimum` at the beginning of the `src/backEnd.js` file (line 10) - default value is 2
-7. Enjoy usage of our application 😉
+7. If you want to test functionality, try these proven combinations:
+   ```
+   60 minutes + flour,sugar,butter,eggs,chocolate
+   20 minutes + flour,sugar,eggs,milk,oil
+   60 minutes + milk, butter, potatoes
+   ```
+8. Enjoy usage of our application 😉
 
 If you think, that the list of ingredients of the API (that is used for autocomplete function) could be changed, just download new list in csv formate from [Spoonacular's list of ingredients](https://spoonacular.com/food-api/docs#List-of-Ingredients) and use our converting script `src/top1kconvert.js` for Node.js to convert ingredients list to JSON formate. Just open your terminal with the path to your local repository and run commands:
 
