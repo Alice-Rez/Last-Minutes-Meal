@@ -7,7 +7,7 @@ import { apiKey } from "./config.js";
 
 // key is not anymore part of the js files that goes to the GH. Look at Slack for info how the config.js file with key should look like......
 
-let minimum = 5;
+let minimum = 2;
 let counter = 0;
 
 export function getRecipe(obj) {
