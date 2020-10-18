@@ -2,7 +2,7 @@
 
 ## Description
 
-<img align="right" src="./README-materials/desktop-demo.gif" width="60%">
+<img align="right" src="./README-materials/desktop-demo.gif" width="70%">
 
 **Insert ingredients and time you have and see, what you can make with it.**
 
