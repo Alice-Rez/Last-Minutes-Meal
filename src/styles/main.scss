@@ -66,34 +66,60 @@ label {
   width: 5rem;
 }
 
-.fieldsIngredient h2 {
-  margin: 1rem 0 0.5rem 0;
-  font-size: 1.33rem;
-}
-.fieldsIngredient input[type="checkbox"] {
-  display: none;
-}
+.fieldsIngredient {
+  h2 {
+    margin: 1rem 0 0.5rem 0;
+    font-size: 1.33rem;
+  }
 
-.fieldsIngredient label:not([for="inputIngredients"]) {
-  background-color: rgba(43, 38, 45, 0.5);
-  color: var(--light);
-  cursor: pointer;
-  border: 1px solid var(--dark);
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem 0.25rem;
-  transition: background-color 0.5s, color 0.5s;
-}
+  input[type="checkbox"] {
+    display: none;
+  }
 
-.fieldsIngredient label:not([for="inputIngredients"]):hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-}
+  label:not([for="inputIngredients"]) {
+    background-color: rgba(43, 38, 45, 0.5);
+    color: var(--light);
+    cursor: pointer;
+    border: 1px solid var(--dark);
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0.25rem;
+    transition: background-color 0.5s, color 0.5s;
+  }
 
-.fieldsIngredient input:checked + label:not([for="inputIngredients"]) {
-  background-color: #fff;
-  color: #000;
-  transition: background-color 0.5s, color 0.5s;
+  label:not([for="inputIngredients"]):hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+
+  input:checked + label:not([for="inputIngredients"]) {
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.5s, color 0.5s;
+  }
+
+  input[type="checkbox"] {
+    margin-left: 1rem;
+  }
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 45%; */
+    padding: 0.5rem;
+  }
+
+  section:nth-of-type(1) {
+    background-color: var(--blue);
+  }
+
+  section:nth-of-type(2) {
+    background-color: var(--red);
+  }
+
+  section:nth-of-type(3) {
+    background-color: rgba(43, 38, 45, 0.8);
+  }
 }
 
 label[for="inputIngredients"] {
@@ -105,25 +131,6 @@ p {
   margin-bottom: 0.5em;
 }
 
-.fieldsIngredient input[type="checkbox"] {
-  margin-left: 1rem;
-}
-.fieldsIngredient section {
-  display: flex;
-  flex-wrap: wrap;
-  /* width: 45%; */
-  padding: 0.5rem;
-}
-.fieldsIngredient section:nth-of-type(1) {
-  background-color: var(--blue);
-}
-.fieldsIngredient section:nth-of-type(2) {
-  background-color: var(--red);
-}
-.fieldsIngredient section:nth-of-type(3) {
-  background-color: rgba(43, 38, 45, 0.8);
-}
-
 button {
   font-weight: bold;
   font-size: 0.9rem;
@@ -132,13 +139,14 @@ button {
   padding: 0.33rem 0.67rem;
   cursor: pointer;
   margin-bottom: 1em;
-}
-button:hover {
-  background-color: #fff;
-}
 
-.search {
-  font-size: 1.1rem;
+  &:hover {
+    background-color: #fff;
+  }
+
+  .search {
+    font-size: 1.1rem;
+  }
 }
 
 .messages,
@@ -156,43 +164,47 @@ button:hover {
   /*the container must be positioned relative:*/
   position: relative;
   display: inline-block;
-}
-.autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 5;
-  /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
-  left: 0;
-  right: 0;
-}
-.autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
-}
-.autocomplete-items div:hover {
-  /*when hovering an item:*/
-  background-color: #e9e9e9;
-}
-.autocomplete-items .autocomplete-active {
-  /*when navigating through the items using the arrow keys:*/
-  background-color: #647295;
-  color: #ffffff;
+
+  &-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 5;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff;
+      border-bottom: 1px solid #d4d4d4;
+    }
+
+    div:hover {
+      /*when hovering an item:*/
+      background-color: #e9e9e9;
+    }
+
+    .autocomplete-active {
+      /*when navigating through the items using the arrow keys:*/
+      background-color: #647295;
+      color: #ffffff;
+    }
+  }
 }
 
 footer {
   margin: 1em 0;
   margin-left: 1em;
   font-size: 0.8rem;
-}
 
-.logo {
-  width: 2%;
-  transform: translateY(40%);
+  .logo {
+    width: 2%;
+    transform: translateY(40%);
+  }
 }
 
 .overlay {
@@ -209,36 +221,113 @@ footer {
   grid-template-rows: auto 1fr 1fr;
   gap: 1rem;
   padding: 1rem;
+
+  h2 {
+    grid-column: 1 / 3;
+    justify-self: center;
+    color: #f2ebe5;
+    margin: 0.5rem 0 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px dashed #f2ebe5;
+  }
+
+  .results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 500px);
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  button {
+    background-color: var(--blue);
+    color: var(--light);
+    text-shadow: 1px 1px 0 var(--dark);
+    padding: 0.5rem 1rem;
+    font-size: 1.125rem;
+  }
+
+  button:hover {
+    background-color: hsl(223, 20%, 59%);
+    color: #fff;
+  }
 }
-.overlay h2 {
+
+.buttonGroup {
   grid-column: 1 / 3;
   justify-self: center;
-  color: #f2ebe5;
-  margin: 0.5rem 0 0 1rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px dashed #f2ebe5;
 }
-.overlay .results {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 500px);
-  justify-content: center;
-  gap: 2rem;
+
+.hidden {
+  /* Have to use important, otherwise it won't
+  overwrite display: grid from #overlay */
+  display: none !important;
 }
+.card {
+  justify-self: center;
+  align-self: stretch;
+  /* width: 90%; */
+  max-width: 500px;
+  /* padding: 1.5rem 3rem 3rem 3rem; */
+  border-radius: 0.5rem;
+  background-color: #f2ebe5;
+
+  img {
+    width: 100%;
+    object-fit: contain;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+
+  p,
+  a {
+    margin: 0 1rem;
+  }
+
+  h3 {
+    color: var(--red);
+    /* text-shadow: 1px 1px 1px var(--dark); */
+    font-family: "Krona One", sans-serif;
+    font-size: 1.5rem;
+    margin: 1rem 0 1rem 1rem;
+  }
+
+  h4 {
+    color: var(--blue);
+    font-size: 1.125rem;
+    margin: 1rem 0 0 1rem;
+    border-top: 1px dashed rgba(0, 0, 0, 0.5);
+    padding-top: 1rem;
+  }
+
+  ol,
+  ul {
+    line-height: 1.4;
+    padding: 1rem 1rem 1rem 2rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
 /* MOBILE VIEW FOR OVERLAY */
 @media (max-width: 768px) {
   .overlay {
     column-gap: 0;
-  }
-  .overlay .results {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr 1fr auto;
-  }
-  .overlay h2 {
-    grid-column: 1 / 3;
-  }
-  .overlay .card {
-    grid-column: 1 / 3;
-    justify-self: center;
+
+    h2 {
+      grid-column: 1 / 3;
+    }
+
+    .results {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr 1fr auto;
+    }
+
+    .card {
+      grid-column: 1 / 3;
+      justify-self: center;
+    }
   }
   .messages {
     margin-left: 0;
@@ -251,68 +340,4 @@ footer {
   .logo {
     width: 7%;
   }
-}
-.hidden {
-  /* Have to use important, otherwise it won't
-  overwrite display: grid from #overlay */
-  display: none !important;
-}
-.overlay .card {
-  justify-self: center;
-  align-self: stretch;
-  /* width: 90%; */
-  max-width: 500px;
-  /* padding: 1.5rem 3rem 3rem 3rem; */
-  border-radius: 0.5rem;
-  background-color: #f2ebe5;
-}
-.card img {
-  width: 100%;
-  object-fit: contain;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-}
-.card p,
-.card a {
-  margin: 0 1rem;
-}
-.card h3 {
-  color: var(--red);
-  /* text-shadow: 1px 1px 1px var(--dark); */
-  font-family: "Krona One", sans-serif;
-  font-size: 1.5rem;
-  margin: 1rem 0 1rem 1rem;
-}
-.card h4 {
-  color: var(--blue);
-  font-size: 1.125rem;
-  margin: 1rem 0 0 1rem;
-  border-top: 1px dashed rgba(0, 0, 0, 0.5);
-  padding-top: 1rem;
-}
-.card ol,
-.card ul {
-  line-height: 1.4;
-}
-.card li {
-  margin-bottom: 0.5rem;
-}
-.card ul,
-.card ol {
-  padding: 1rem 1rem 1rem 2rem;
-}
-.overlay .buttonGroup {
-  grid-column: 1 / 3;
-  justify-self: center;
-}
-.overlay button {
-  background-color: var(--blue);
-  color: var(--light);
-  text-shadow: 1px 1px 0 var(--dark);
-  padding: 0.5rem 1rem;
-  font-size: 1.125rem;
-}
-.overlay button:hover {
-  background-color: hsl(223, 20%, 59%);
-  color: #fff;
 }
