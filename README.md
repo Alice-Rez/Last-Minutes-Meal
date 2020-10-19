@@ -2,11 +2,11 @@
 
 ## Description
 
-<img align="right" src="./README-materials/desktop-demo.gif" width="70%">
-
 Collaboration with [Christian Heinrich (coffeepyros)](https://github.com/coffeepyros)
 
 **Insert ingredients and time you have and see, what you can make with it.**
+
+<img align="right" src="./README-materials/desktop-demo.gif" width="70%">
 
 Search Recipe application targeted at busy people working/learning from home in the time of Covid-19, which have to be able prepare lunch in limited time (during lunch break) with just ingredients that they have already at home. These people need a quick possibility to find a recipe that will work with their ingredients and time.
 
