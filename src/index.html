@@ -8,140 +8,139 @@
   </head>
 
   <body>
-    <body>
-      <main>
-        <h1>Last Minutes Meal</h1>
-        <form action="" autocomplete="off">
-          <fieldset>
-            <legend>1.) Time</legend>
-            <label for="cookingTime">Cooking Time:</label>
-            <input
-              type="number"
-              id="cookingTime"
-              class="cookingTime"
-              name="cookingTime"
-              value="15"
-              length="3"
-            />
-            Minutes
-          </fieldset>
-  
-          <fieldset id="fieldsIngredient" class="autocomplete fieldsIngredient">
-            <legend>2.) Ingredients</legend>
-  
-            <h2>Top 12 ingredients used in cooking</h2>
-  
-            <p>Clicking an ingredient activates it.</p>
-  
-            <section class="top12-vegatarian"></section>
-            <section class="top12-meat"></section>
-  
-            <label for="inputIngredients"
-              >Add other ingredients you have ready:</label
-            >
-            <input
-              type="text"
-              id="inputIngredients"
-              class="inputIngredients"
-              name="inputIngredients"
-            />
-            <button id="addIngredient" class="addIngredient">
-              Add Ingredient
-            </button>
-  
-            <!-- <h3>Food Allergies</h3>
+    <main>
+      <h1>Last Minutes Meal</h1>
+      <form action="" autocomplete="off">
+        <fieldset>
+          <legend>1.) Time</legend>
+          <label for="cookingTime">Cooking Time:</label>
+          <input
+            type="number"
+            id="cookingTime"
+            class="cookingTime"
+            name="cookingTime"
+            value="15"
+            length="3"
+          />
+          Minutes
+        </fieldset>
+
+        <fieldset id="fieldsIngredient" class="autocomplete fieldsIngredient">
+          <legend>2.) Ingredients</legend>
+
+          <h2>Top 12 ingredients used in cooking</h2>
+
+          <p>Clicking an ingredient activates it.</p>
+
+          <section class="top12-vegatarian"></section>
+          <section class="top12-meat"></section>
+
+          <label for="inputIngredients"
+            >Add other ingredients you have ready:</label
+          >
+          <input
+            type="text"
+            id="inputIngredients"
+            class="inputIngredients"
+            name="inputIngredients"
+          />
+          <button id="addIngredient" class="addIngredient">
+            Add Ingredient
+          </button>
+
+          <!-- <h3>Food Allergies</h3>
             <p>Paragraph, explaining that you can remove ingredients</p>
             <label for="ingredientsNO">Ingredient:</label>
             <input type="text" id="ingredientsNO" name="ingredientsNO" />
             <button>Add Ingredient Exclusion</button> -->
-          </fieldset>
-  
-          <fieldset>
-            <legend>3.) Search</legend>
-            <button id="search" class="search">Search Recipes</button>
-            <section class="loader">
-              <img src="./images/loader.gif" alt="loader" class="loader__gif" />
-            </section>
-            <section class="messages"></section>
-            <!-- <br />
+        </fieldset>
+
+        <fieldset>
+          <legend>3.) Search</legend>
+          <button id="search" class="search">Search Recipes</button>
+          <section class="loader">
+            <img src="./images/loader.gif" alt="loader" class="loader__gif" />
+          </section>
+          <section class="messages"></section>
+          <!-- <br />
             <button id="displayResults">Test Result Display</button> -->
-          </fieldset>
-        </form>
-      </main>
-  
-      <div id="overlay" class="overlay hidden">
-        <h2>Recipe Suggestions</h2>
-        <section class="results"></section>
-        <section class="buttonGroup">
-          <button
-            onclick="document.getElementById('overlay').classList.toggle('hidden')"
-          >
-            Back to Recipe Search
-          </button>
-          <button>Show more recipes</button>
-        </section>
-      </div>
-  
-      <footer>
+        </fieldset>
+      </form>
+    </main>
+
+    <div id="overlay" class="overlay hidden">
+      <h2>Recipe Suggestions</h2>
+      <section class="results"></section>
+      <section class="buttonGroup">
+        <button
+          onclick="document.getElementById('overlay').classList.toggle('hidden')"
+        >
+          Back to Recipe Search
+        </button>
+        <button>Show more recipes</button>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        Recipes data provided by
+        <a href="https://spoonacular.com/food-api">Spoonacular API</a>
+      </p>
+      <p>
+        &#169;2020 Made by
+        <img class="logo" src="./images/logo.svg" alt="Alice rez logo" /> Alice
+        Rez &amp; Christian Heinrich (coffeepyros)
+      </p>
+    </footer>
+
+    <!-- Handlebar Template for displaying API status messages -->
+    <script id="message-template" type="text/x-handlebars-template">
+      <p>
+        {{text}}
+      </p>
+    </script>
+
+    <!-- Handlebar Template for displaying API delivered recipes, based on search -->
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <div class="card">
+        <img src="{{image}}" alt="" />
+        <h3>
+          {{title}}
+        </h3>
         <p>
-          Recipes data provided by
-          <a href="https://spoonacular.com/food-api">Spoonacular API</a>
+          Time: {{readyInMinutes}} minutes
         </p>
-        <p>
-          &#169;2020 Made by
-          <img class="logo" src="./images/logo.svg" alt="Alice rez logo" /> Alice
-          Rez &amp; Christian Heinrich (coffeepyros)
-        </p>
-      </footer>
-  
-      <!-- Handlebar Template for displaying API status messages -->
-      <script id="message-template" type="text/x-handlebars-template">
-        <p>
-          {{text}}
-        </p>
-      </script>
-  
-      <!-- Handlebar Template for displaying API delivered recipes, based on search -->
-      <script id="recipe-template" type="text/x-handlebars-template">
-        <div class="card">
-          <img src="{{image}}" alt="" />
-          <h3>
-            {{title}}
-          </h3>
+        {{#if missedIngredientCount}}
           <p>
-            Time: {{readyInMinutes}} minutes
+            Nr. of missed ingredients: {{missedIngredientCount}}
           </p>
-          {{#if missedIngredientCount}}
-            <p>
-              Nr. of missed ingredients: {{missedIngredientCount}}
-            </p>
-          {{/if}}
-          <br />
-          <a target="_blank" rel="nofollow" href="{{sourceUrl}}">
-            Source of recipe
-          </a>
-          <h4>
-            Instructions:
-          </h4>
-          <ul>
-            {{#each extendedIngredients}}
-              {{#if id}}
-                <li>
-                  {{originalString}}
-                </li>
-              {{/if}}
+        {{/if}}
+        <br />
+        <a target="_blank" rel="nofollow" href="{{sourceUrl}}">
+          Source of recipe
+        </a>
+        <h4>
+          Instructions:
+        </h4>
+        <ul>
+          {{#each extendedIngredients}}
+            {{#if id}}
+              <li>
+                {{originalString}}
+              </li>
+            {{/if}}
+          {{/each}}
+        </ul>
+        <ol>
+          {{#each analyzedInstructions}}
+            {{#each steps}}
+              <li>
+                {{step}}
+              </li>
             {{/each}}
-          </ul>
-          <ol>
-            {{#each analyzedInstructions}}
-              {{#each steps}}
-                <li>
-                  {{step}}
-                </li>
-              {{/each}}
-            {{/each}}
-          </ol>
-        </div>
-      </script>
+          {{/each}}
+        </ol>
+      </div>
+    </script>
   </body>
 </html>
